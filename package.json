@@ -1,57 +1,66 @@
 {
-    "name": "grimoirejs-inquisitor",
-    "version": "1.0.0",
-    "description": "The test runners environment for grimoire.js",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "prepublish": "babel ./src --out-dir ./lib --presets es2015,stage-2 --plugins transform-runtime"
+  "name": "grimoirejs-inquisitor",
+  "version": "1.0.1",
+  "description": "The test runners environment for grimoire.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "babel ./src --out-dir ./lib --presets es2015,stage-2 --plugins transform-runtime"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrimoireGL/grimoirejs-inquisitor.git"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "src"
+  ],
+  "keywords": [
+    "grimoire"
+  ],
+  "author": "GrimoireGL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GrimoireGL/grimoirejs-inquisitor/issues"
+  },
+  "homepage": "https://grimoire.gl",
+  "dependencies": {
+    "ava": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "grimoirejs-cauldron": "^1.2.0"
+  },
+  "bin": {
+    "inquisitor": "./bin/inquisitor"
+  },
+  "grimoire": {
+    "ts": {
+      "lib": "./lib-es6",
+      "temp": "./lib-ts",
+      "src": "./src-debug",
+      "es5": "./lib-es5"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/GrimoireGL/grimoirejs-inquisitor.git"
+    "main": "test.ts",
+    "test": {
+      "defaultGlob": "**/*Test.js",
+      "src": "./test",
+      "lib": "./lib-test"
     },
-    "files": ["bin", "lib", "src"],
-    "keywords": [
-        "grimoire"
+    "out": {
+      "es6": "./product/grimoire.es2016.js",
+      "es5": "./product/grimoire.js"
+    },
+    "txt-exts": [
+      ".txt"
     ],
-    "author": "GrimoireGL",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/GrimoireGL/grimoirejs-inquisitor/issues"
-    },
-    "homepage": "https://grimoire.gl",
-    "dependencies": {
-        "grimoirejs-cauldron": "^1.2.0"
-    },
-    "bin": {
-        "inquisitor": "./bin/inquisitor"
-    },
-    "grimoire": {
-        "ts": {
-            "lib": "./lib-es6",
-            "temp": "./lib-ts",
-            "src": "./src-debug",
-            "es5": "./lib-es5"
-        },
-        "main": "test.ts",
-        "test": {
-            "defaultGlob": "**/*Test.js",
-            "src": "./test",
-            "lib": "./lib-test"
-        },
-        "out": {
-            "es6": "./product/grimoire.es2016.js",
-            "es5": "./product/grimoire.js"
-        },
-        "txt-exts": [
-            ".txt"
-        ],
-        "doc": {
-            "src": "./doc",
-            "header": "./doc/header.md",
-            "footer": "./doc/footer.md",
-            "dest": "./lib-md/index.md"
-        }
+    "doc": {
+      "src": "./doc",
+      "header": "./doc/header.md",
+      "footer": "./doc/footer.md",
+      "dest": "./lib-md/index.md"
     }
+  }
 }
