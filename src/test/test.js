@@ -20,7 +20,7 @@ const test = async(config) => {
     const filePath = `${config.test.temp}/${argv.files?argv.files:config.test.defaultGlob}`;
     await execAsync(`./node_modules/.bin/babel ${config.test.src} --out-dir ${config.test.temp} --presets es2015,stage-2 --plugins transform-runtime`);
     await spawnAsync("./node_modules/.bin/cauldron", ["txt2js", `--src ${config.test.src}`, `--dest ${config.test.temp}`, `--noDts`, `--isCjs`]);
-    const result = await spawnAsync(`./node_modules/.bin/ava`, [filePath, '--verbose']);
+    const result = await spawnAsync(`./node_modules/.bin/ava`, [filePath, '--verbose','--serial']);
 };
 
 const buildForTest = async(config) => {
