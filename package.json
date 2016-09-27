@@ -1,6 +1,6 @@
 {
   "name": "grimoirejs-inquisitor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The test runners environment for grimoire.js",
   "main": "index.js",
   "scripts": {

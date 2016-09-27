@@ -20,7 +20,13 @@ const test = async(config) => {
     const filePath = `${config.test.temp}/${argv.files?argv.files:config.test.defaultGlob}`;
     await execAsync(`./node_modules/.bin/babel ${config.test.src} --out-dir ${config.test.temp} --presets es2015,stage-2 --plugins transform-runtime`);
     await spawnAsync("./node_modules/.bin/cauldron", ["txt2js", `--src ${config.test.src}`, `--dest ${config.test.temp}`, `--noDts`, `--isCjs`]);
-    const result = await spawnAsync(`./node_modules/.bin/ava`, [filePath, '--verbose','--serial']);
+    try {
+        const result = await spawnAsync(`./node_modules/.bin/ava`, [filePath, '--verbose', '--serial']);
+    } catch (e) {
+        if (!argv.watch) {
+            process.exit(1);
+        }
+    }
 };
 
 const buildForTest = async(config) => {
@@ -28,6 +34,9 @@ const buildForTest = async(config) => {
         await spawnAsync("./node_modules/.bin/cauldron", ["build", "--noBundle", "--babelSeparated"]);
     } catch (e) {
         console.log(e);
+        if (!argv.watch) {
+            process.exit(1);
+        }
     }
 }
 
