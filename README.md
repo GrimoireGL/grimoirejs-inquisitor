@@ -1,5 +1,7 @@
 # Deprecated
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/GrimoireGL/grimoirejs-inquisitor.svg)](https://greenkeeper.io/)
+
 Build environment for Grimoire.js was updated.
 
 Now developper can use any test environment since the build environment no more doing something special tasks.
